@@ -6,9 +6,14 @@ using UnityEngine.UI;
 
 public class SimpleSceneController : MonoBehaviour 
 {
-	public GameObject Brick;
-	public GameObject Ball;
-	public Text Message;
+	[SerializeField]
+	private GameObject brick;
+
+	[SerializeField]
+	private GameObject ball;
+
+	[SerializeField]
+	private Text message;
 	
 	// Use this for initialization
 	void Start () 
@@ -23,15 +28,15 @@ public class SimpleSceneController : MonoBehaviour
 	{
 		if(GameObject.FindGameObjectsWithTag("Brick").Length == 0)
 		{
-			this.Message.text = "You Win!";
-			this.Message.gameObject.SetActive(true);
+			this.message.text = "You Win!";
+			this.message.gameObject.SetActive(true);
 			Invoke("GotoMenu", 3);
 		}
 
 		if(GameObject.FindGameObjectsWithTag("Ball").Length == 0)
 		{
-			this.Message.text = "You Lose!";
-			this.Message.gameObject.SetActive(true);
+			this.message.text = "You Lose!";
+			this.message.gameObject.SetActive(true);
 			Invoke("GotoMenu", 3);
 		}
 	}
@@ -68,7 +73,7 @@ public class SimpleSceneController : MonoBehaviour
 	private void CreateBall()
 	{		
 		//Access it's Ball Prefab and instantiate a new ball
-		GameObject ball = Instantiate(this.Ball) as GameObject;
+		GameObject ball = Instantiate(this.ball) as GameObject;
 		ball.transform.position = new Vector3 (0.0f, -3.21f, 0.0f); //Hard-coded start position. (ICKY!!!)
 		ball.GetComponent<Rigidbody2D>().velocity = new Vector2(-2.0f, 2.0f);
 		ball.GetComponent<PhysicalObject>().PreviousVelocity = ball.GetComponent<Rigidbody2D>().velocity;
