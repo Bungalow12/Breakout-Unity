@@ -110,7 +110,7 @@ public class SceneController : MonoBehaviour
 							SpriteRenderer renderer = brick.GetComponent<SpriteRenderer>();
 
 							//Set the image to render on the sprite.
-							Sprite brickSprite = Resources.Load<Sprite>(Path.Combine(@"Images/Sprites/Bricks", file));
+							Sprite brickSprite = Resources.Load<Sprite>(@"Images/Sprites/Bricks/" + file);
 							renderer.sprite = brickSprite;
 						}
 					}
